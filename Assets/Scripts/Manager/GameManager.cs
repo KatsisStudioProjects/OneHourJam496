@@ -12,8 +12,13 @@ namespace OneHourGameJam.Manager
         [SerializeField]
         private Sprite[] _sprites;
 
+        [SerializeField]
+        private GameObject _victoryText;
+
         private int _counter;
         private int _max;
+
+        public bool IsWon { set; get; }
 
         private void Awake()
         {
@@ -31,6 +36,12 @@ namespace OneHourGameJam.Manager
 
             var prog = (float)_counter * (_sprites.Length - 1) / _max;
             _bg.sprite = _sprites[Mathf.FloorToInt(prog)];
+
+            if (_counter == _max)
+            {
+                IsWon = true;
+                _victoryText.SetActive(true);
+            }
         }
 
 

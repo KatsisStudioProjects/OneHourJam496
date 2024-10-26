@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace OneHourGameJam.Map
 {
-    public class JamPart : MonoBehaviour
+    public class JamPart : AAI
     {
         [SerializeField]
         private Sprite _explosion;
@@ -12,13 +12,12 @@ namespace OneHourGameJam.Map
         private Collider2D _coll;
         private SpriteRenderer _sr;
 
-        private Camera _cam;
-
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             _coll = GetComponent<Collider2D>();
             _sr = GetComponent<SpriteRenderer>();
-            _cam = Camera.main;
         }
 
         private void Start()
@@ -36,6 +35,7 @@ namespace OneHourGameJam.Map
         {
             _coll.enabled = false;
             _sr.sprite = _explosion;
+            _isConsumed = true;
             yield return new WaitForSeconds(.5f);
             Destroy(gameObject);
         }
