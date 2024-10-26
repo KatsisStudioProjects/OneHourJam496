@@ -35,6 +35,7 @@ namespace OneHourGameJam.Map
         {
             _coll.enabled = false;
             _sr.sprite = _explosion;
+            _isConsumed = true;
             yield return new WaitForSeconds(.5f);
             Destroy(gameObject);
         }

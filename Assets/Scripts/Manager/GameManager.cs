@@ -15,6 +15,8 @@ namespace OneHourGameJam.Manager
         private int _counter;
         private int _max;
 
+        public bool IsWon { set; get; }
+
         private void Awake()
         {
             Instance = this;
@@ -31,6 +33,11 @@ namespace OneHourGameJam.Manager
 
             var prog = (float)_counter * (_sprites.Length - 1) / _max;
             _bg.sprite = _sprites[Mathf.FloorToInt(prog)];
+
+            if (_counter == _max)
+            {
+                IsWon = true;
+            }
         }
 
 

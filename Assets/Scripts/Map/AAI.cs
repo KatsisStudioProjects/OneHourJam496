@@ -1,5 +1,4 @@
 ﻿using OneHourGameJam.Manager;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace OneHourGameJam.Map
@@ -11,6 +10,8 @@ namespace OneHourGameJam.Map
         private Camera _cam;
 
         private float _dirTimer;
+
+        protected bool _isConsumed;
 
         protected virtual void Awake()
         {
@@ -28,6 +29,12 @@ namespace OneHourGameJam.Map
 
         private void Update()
         {
+            if (_isConsumed || GameManager.Instance.IsWon)
+            {
+                _rb.linearVelocity = Vector2.zero;
+                return;
+            }
+
             _dirTimer -= Time.deltaTime;
             if (_dirTimer <= 0f)
             {

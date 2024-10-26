@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using OneHourGameJam.Manager;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace OneHourGameJam.Map
@@ -7,7 +8,10 @@ namespace OneHourGameJam.Map
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            SceneManager.LoadScene("Main");
+            if (!GameManager.Instance.IsWon)
+            {
+                SceneManager.LoadScene("Main");
+            }
         }
     }
 }
