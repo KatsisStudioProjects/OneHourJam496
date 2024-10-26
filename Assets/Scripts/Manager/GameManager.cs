@@ -22,13 +22,15 @@ namespace OneHourGameJam.Manager
 
         public void Register()
         {
-            _counter++;
             _max++;
         }
 
         public void Remove()
         {
-            _counter--;
+            _counter++;
+
+            var prog = (float)_counter * (_sprites.Length - 1) / _max;
+            _bg.sprite = _sprites[Mathf.FloorToInt(prog)];
         }
     }
 }
