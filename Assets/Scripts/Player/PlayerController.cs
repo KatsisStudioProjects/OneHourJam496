@@ -1,16 +1,26 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+namespace OneHourGameJam.Player
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        
-    }
+        private Rigidbody2D _rb;
+        private Vector2 _mov;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+        }
+
+        private void FixedUpdate()
+        {
+            _rb.linearVelocity = _mov * 2f;
+        }
+
+        public void OnMove(InputAction.CallbackContext value)
+        {
+            _mov = value.ReadValue<Vector2>();
+        }
     }
 }
