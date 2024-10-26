@@ -12,6 +12,9 @@ namespace OneHourGameJam.Manager
         [SerializeField]
         private Sprite[] _sprites;
 
+        [SerializeField]
+        private GameObject _victoryText;
+
         private int _counter;
         private int _max;
 
@@ -37,6 +40,7 @@ namespace OneHourGameJam.Manager
             if (_counter == _max)
             {
                 IsWon = true;
+                _victoryText.SetActive(true);
             }
         }
 
