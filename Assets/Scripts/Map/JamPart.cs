@@ -12,10 +12,13 @@ namespace OneHourGameJam.Map
         private Collider2D _coll;
         private SpriteRenderer _sr;
 
+        private Camera _cam;
+
         private void Awake()
         {
             _coll = GetComponent<Collider2D>();
             _sr = GetComponent<SpriteRenderer>();
+            _cam = Camera.main;
         }
 
         private void Start()
