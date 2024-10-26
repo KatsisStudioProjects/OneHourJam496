@@ -18,7 +18,7 @@ namespace OneHourGameJam.Player
 
         private void FixedUpdate()
         {
-            _rb.linearVelocity = _mov * 2f;
+            _rb.linearVelocity = _mov * 3f;
             var bounds = GameManager.CalculateBounds(_cam);
             if (transform.position.x > bounds.max.x) transform.position = new(bounds.max.x, transform.position.y);
             if (transform.position.x < bounds.min.x) transform.position = new(bounds.min.x, transform.position.y);
